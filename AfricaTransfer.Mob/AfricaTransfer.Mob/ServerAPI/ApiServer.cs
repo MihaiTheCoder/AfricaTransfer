@@ -61,7 +61,10 @@ namespace AfricaTransfer.CoreLib.ServerAPI
             string actionUrl = ComposeUrl(Orders) + "/" + id;
             return HttpGet<Order>(actionUrl).Data;
         }
+        public ApiServer(): this("http://africatransferapi.azurewebsites.net/api/")
+        {
 
+        }
         public ApiServer(string baseURL)
         {
             this.baseURL = baseURL;

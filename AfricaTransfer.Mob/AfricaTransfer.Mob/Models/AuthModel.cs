@@ -7,6 +7,8 @@ namespace AfricaTransfer.CoreLib.Models
 {
     public class AuthModel
     {
+        public static string MobilePhoneNumber { get; set; }
+
         public int ID { get; set; }
         public string Email { get; set; }
         

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AfricaTransfer.CoreLib.ClientProcessors;
+using AfricaTransfer.CoreLib.ServerAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,10 @@ namespace AfricaTransfer.Mob.Views
 
         public async void AddFundsBtn_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
+            ApiServer server = new ApiServer();
+            TransactionProcessor processor = new TransactionProcessor(server);
+            
         }
         public async void TransferFundsBtn_Clicked(object sender, EventArgs e)
         {
