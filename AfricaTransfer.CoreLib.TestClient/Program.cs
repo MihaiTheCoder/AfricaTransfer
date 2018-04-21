@@ -11,6 +11,11 @@ namespace AfricaTransfer.CoreLib.TestClient
     {
         static void Main(string[] args)
         {
+            //E2E();
+        }
+
+        private static void E2E()
+        {
             string sellerPhoneNumber = "07434";
             string buyerPhoneNumber = "34075";
             string donatorPhoneNumber = "1234";

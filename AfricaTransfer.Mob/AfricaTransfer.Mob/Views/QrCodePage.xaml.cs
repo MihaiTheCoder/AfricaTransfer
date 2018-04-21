@@ -4,23 +4,24 @@ using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing;
+using ZXing.Rendering;
 
 namespace AfricaTransfer.Mob.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QrCodePage : ContentPage
     {
-        BarcodeWriter<MemoryStream> bw;
+        BarcodeWriter<PixelData> bw;
         public ImageSource QrCode { get; set; }
         public QrCodePage(string code)
         {
-            BarcodeWriter<MemoryStream> bw = new BarcodeWriter<MemoryStream> { Format = BarcodeFormat.QR_CODE };
+            BarcodeWriter<PixelData> bw = new BarcodeWriter<PixelData> { Format = BarcodeFormat.QR_CODE, Renderer = new ZXing.Rendering.PixelDataRenderer()};
+
+            QrCode = ImageSource.FromStream(() => new MemoryStream(bw.Write(code).Pixels));
             
-            ImageSource.FromStream(() => bw.Write(code));
-            Debug.WriteLine(code);
-            Debug.WriteLine(code);
-            Debug.WriteLine(code);
             InitializeComponent();
+
+            Qrimg.Source = QrCode;
 
             BindingContext = this;
         }
