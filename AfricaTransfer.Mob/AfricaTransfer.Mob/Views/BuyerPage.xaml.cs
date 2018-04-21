@@ -18,7 +18,7 @@ namespace AfricaTransfer.Mob.Views
         }
         public async void ScanQrCode(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await Navigation.PushAsync(new AddOrderId());
         }
     }
 }

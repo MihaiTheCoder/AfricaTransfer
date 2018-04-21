@@ -1,4 +1,6 @@
-﻿using AfricaTransfer.CoreLib.Models;
+﻿using AfricaTransfer.CoreLib.ClientProcessors;
+using AfricaTransfer.CoreLib.Models;
+using AfricaTransfer.CoreLib.ServerAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,9 @@ namespace AfricaTransfer.Mob.Views
         public async void AddPhone(object sender, EventArgs e)
         {
             AuthModel.MobilePhoneNumber = Phone;
+            ApiServer server = new ApiServer();
+            server.AddPhoneNUmber(Phone);
+            
             await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
         }
 	}
