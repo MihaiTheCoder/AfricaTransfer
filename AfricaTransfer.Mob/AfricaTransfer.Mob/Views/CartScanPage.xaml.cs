@@ -1,9 +1,11 @@
-﻿using AfricaTransfer.CoreLib.Models;
+﻿using AfricaTransfer.CoreLib.ClientProcessors;
+using AfricaTransfer.CoreLib.Models;
 using System;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
 
 namespace AfricaTransfer.Mob.Views
 {
@@ -20,7 +22,11 @@ namespace AfricaTransfer.Mob.Views
 
             MyListView.ItemsSource = Items;
         }
-
+        async void SaveOrder(object sender, ItemTappedEventArgs e)
+        {
+            TransactionProcessor transactionProcessor = new TransactionProcessor();
+            transactionProcessor.AddOrder(Items.ToList(), AuthModel.MobilePhoneNumber);
+        }
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
@@ -34,8 +40,7 @@ namespace AfricaTransfer.Mob.Views
 
         async void ScanQr(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
-            Items.Add(new OrderLine { ID = 1, ProductID = 1, ProductPrice = 1, Quantity = 1 });
+            Items.Add(new OrderLine { ProductID = 1, ProductPrice = 50, Quantity = 1 });
         }
     }
 }

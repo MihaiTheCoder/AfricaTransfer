@@ -10,6 +10,10 @@ namespace AfricaTransfer.CoreLib.ClientProcessors
     {
         private readonly ApiServer apiServer;
 
+        public TransactionProcessor() : this(new ApiServer())
+        {
+
+        }
         public TransactionProcessor(ApiServer apiServer)
         {
             this.apiServer = apiServer;

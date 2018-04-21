@@ -27,7 +27,8 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Name}"/>
                                 <Label Text="{Binding Price}"/>
-                                <Label Text="{Binding Quantity}"/>
+                                <Entry Text="{Binding Quantity}"/>
+                                
                                 <!--<Label Text="{Binding Text}" 
                    Style="{DynamicResource ListItemTextStyle}" />
                             <Label Text="{Binding Detail}" 
@@ -38,6 +39,7 @@
                 </ListView.ItemTemplate>
 
             </ListView>
+            <Button Text="Save order" Clicked="SaveOrder"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
