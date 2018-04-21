@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfricaTransferAPI", "AfricaTransferAPI\AfricaTransferAPI.csproj", "{1CC9AF17-FDBE-4A51-9393-70F4E1D08C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AfricaTransferAPI", "AfricaTransferAPI\AfricaTransferAPI.csproj", "{1CC9AF17-FDBE-4A51-9393-70F4E1D08C39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfricaTransfer.Mob.Android", "AfricaTransfer.Mob\AfricaTransfer.Mob.Android\AfricaTransfer.Mob.Android.csproj", "{C1B95568-36D9-489C-A2A0-6C869317F9A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfricaTransfer.Mob.UWP", "AfricaTransfer.Mob\AfricaTransfer.Mob.UWP\AfricaTransfer.Mob.UWP.csproj", "{643BEEB8-B82D-4A46-B26D-F544B6A92270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfricaTransfer.Mob", "AfricaTransfer.Mob\AfricaTransfer.Mob\AfricaTransfer.Mob.csproj", "{60910066-7196-4C0D-A403-7BCFCD94EB0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AfricaTransfer.Mob", "AfricaTransfer.Mob\AfricaTransfer.Mob\AfricaTransfer.Mob.csproj", "{60910066-7196-4C0D-A403-7BCFCD94EB0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfricaTransfer.CoreLib", "AfricaTransfer.CoreLib\AfricaTransfer.CoreLib.csproj", "{F2CE8348-7853-4653-AD25-B5BDAE7CC1A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AfricaTransfer.CoreLib", "AfricaTransfer.CoreLib\AfricaTransfer.CoreLib.csproj", "{F2CE8348-7853-4653-AD25-B5BDAE7CC1A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0658E386-6710-4DAD-937F-5F24B239705C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

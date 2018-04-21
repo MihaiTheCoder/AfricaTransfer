@@ -8,9 +8,9 @@ using AfricaTransfer.Mob.ViewModels;
 
 namespace AfricaTransfer.Mob.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ItemDetailPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ItemDetailPage : ContentPage
+    {
         ItemDetailViewModel viewModel;
 
         public ItemDetailPage(ItemDetailViewModel viewModel)

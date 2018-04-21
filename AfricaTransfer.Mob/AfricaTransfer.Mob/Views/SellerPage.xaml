@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AfricaTransfer.Mob.Views.SellerPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Sell"
+                    x:Name="SellBtn"
+                    Clicked="MngProductsBtn_Clicked" />
+            <Button Text="Manage Products"
+                    x:Name="MngProductsBtn"
+                    Clicked="MngProductsBtn_Clicked" />
+            <Button Text="Cash out"
+                    x:Name="CashOutBtn"
+                    Clicked="CashOutBtn_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

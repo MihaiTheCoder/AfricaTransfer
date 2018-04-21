@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<!--<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:AfricaTransfer.Mob.Views"
             x:Class="AfricaTransfer.Mob.Views.MainPage">
@@ -26,4 +26,26 @@
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
-</TabbedPage>
+</TabbedPage>-->
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="AfricaTransfer.Mob.Views.MainPage"
+             Title="Think of the children">
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Button Text="Buyer"
+                    x:Name="BuyerBtn"
+                    Clicked="BuyerBtn_Clicked"
+                    FontSize="Large"/>
+            <Button Text="Seller"
+                    x:Name="SellerBtn"
+                    Clicked="SellerBtn_Clicked"
+                    FontSize="Large"/>
+            <Button Text="Donate"
+                    x:Name="DonateBtn"
+                    Clicked="DonateBtn_Clicked"
+                    FontSize="Large"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
