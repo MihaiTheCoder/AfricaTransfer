@@ -21,9 +21,9 @@ namespace AfricaTransfer.CoreLib.ClientProcessors
             apiServer.AddBankTransaction(new BankTransaction { Ammount = ammount, DestinationAuthModelID = authModel.ID });
         }
         
-        public void AddProduct(Product product)
+        public Product AddProduct(Product product)
         {
-            apiServer.AddProduct(product);
+            return apiServer.AddProduct(product);
         } 
 
         public int AddOrder(List<OrderLine> orderLines, string sellerPhoneNumber)
@@ -33,6 +33,26 @@ namespace AfricaTransfer.CoreLib.ClientProcessors
             order.SellerID = seller.ID;
             order.OrderLines = orderLines;
             return apiServer.AddOrder(order);
+        }
+
+        public void AddMobileTransfer(float ammount, string donatorPhoneNumber, string buyerPhoneNumber)
+        {
+            var donator = apiServer.GetAuthModel(donatorPhoneNumber);
+            var buyer = apiServer.GetAuthModel(buyerPhoneNumber);
+            var mobileTransaction = new MobileTransaction {
+                SourceAuthModelID = donator.ID,
+                DestinationAuthModelID = buyer.ID,
+                Ammount = ammount
+            };
+            apiServer.AddMobileTransaction(mobileTransaction);
+        }
+
+        public void ConfirmOrder(Order order, string buyerPhoneNumber)
+        {
+            var buyer = apiServer.GetAuthModel(buyerPhoneNumber);
+            order.BuyerID = buyer.ID;
+
+            apiServer.ConfirmOrder(order);
         }
 
         public Order GetOrder(int id)

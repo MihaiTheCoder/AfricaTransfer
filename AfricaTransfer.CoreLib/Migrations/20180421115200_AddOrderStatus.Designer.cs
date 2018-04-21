@@ -11,9 +11,10 @@ using System;
 namespace AfricaTransfer.CoreLib.Migrations
 {
     [DbContext(typeof(AfricaTransferContext))]
-    partial class AfricaTransferContextModelSnapshot : ModelSnapshot
+    [Migration("20180421115200_AddOrderStatus")]
+    partial class AddOrderStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +81,7 @@ namespace AfricaTransfer.CoreLib.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("BuyerID");
+                    b.Property<int>("BuyerID");
 
                     b.Property<int>("SellerID");
 
@@ -171,7 +172,8 @@ namespace AfricaTransfer.CoreLib.Migrations
                 {
                     b.HasOne("AfricaTransfer.CoreLib.Models.AuthModel", "Buyer")
                         .WithMany()
-                        .HasForeignKey("BuyerID");
+                        .HasForeignKey("BuyerID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("AfricaTransfer.CoreLib.Models.AuthModel", "Seller")
                         .WithMany()

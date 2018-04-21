@@ -30,10 +30,10 @@ namespace AfricaTransfer.CoreLib.ServerAPI
             HttpPost(actionUrl, bankTransaction);
         }
 
-        internal void AddProduct(Product product)
+        public Product AddProduct(Product product)
         {
             string actionUrl = ComposeUrl(Products);
-            HttpPost(actionUrl, product);
+            return HttpPost<Product, Product>(actionUrl, product).Data;
         }
 
         public int AddOrder(Order order)
@@ -41,6 +41,19 @@ namespace AfricaTransfer.CoreLib.ServerAPI
             string actionUrl = ComposeUrl(Orders);
 
             return HttpPost<Order, Order>(actionUrl, order).Data.ID;
+        }
+
+        public void ConfirmOrder(Order order)
+        {
+            var actionUrl = ComposeUrl(Orders) + "/" + order.ID;
+            order.Status = OrderStatus.Confirmed;
+            HttpPut(actionUrl, order);
+        }
+
+        internal void AddMobileTransaction(MobileTransaction mobileTransaction)
+        {
+            string actionUrl = ComposeUrl(MobileTransactions);
+            HttpPost(actionUrl, mobileTransaction);
         }
 
         internal Order GetOrder(int id)
@@ -78,6 +91,18 @@ namespace AfricaTransfer.CoreLib.ServerAPI
             request.AddJsonBody(Data);
 
             var response = client.Execute(request);            
+            return response;
+        }
+
+        protected IRestResponse HttpPut<TBody>(String Uri, TBody Data)
+    where TBody : class
+        {
+            var client = new RestClient(baseURL);
+            var request = new RestRequest(Uri, Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(Data);
+
+            var response = client.Execute(request);
             return response;
         }
 

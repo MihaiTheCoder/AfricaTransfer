@@ -43,6 +43,8 @@ namespace AfricaTransferAPI.Controllers
                 return NotFound();
             }
 
+            order.OrderLines = _context.OrderLine.Where(ol => ol.OrderID == order.ID).ToList();
+
             return Ok(order);
         }
 
@@ -61,6 +63,26 @@ namespace AfricaTransferAPI.Controllers
             }
 
             _context.Entry(order).State = EntityState.Modified;
+
+            if(order.Status ==OrderStatus.Confirmed)
+            {
+                var ammount = order.OrderLines.Sum(o => o.ProductPrice);
+
+                _context.MobileTransaction.Add(new MobileTransaction {
+                    DestinationAuthModelID = order.SellerID,
+                    SourceAuthModelID = order.BuyerID.Value,
+                    Ammount = ammount
+                });
+
+                var sellerPhoneCredit = _context.PhoneCredit.First(am => am.AuthModelID == order.SellerID);
+                sellerPhoneCredit.Credit += ammount;
+
+                var buyerPhoneCredit = _context.PhoneCredit.First(am => am.AuthModelID == order.BuyerID);
+                buyerPhoneCredit.Credit -= ammount;
+
+                if (buyerPhoneCredit.Credit <= 0)
+                    return BadRequest();
+            }
 
             try
             {
@@ -91,11 +113,14 @@ namespace AfricaTransferAPI.Controllers
             }
 
             _context.Order.Add(order);
-            await _context.SaveChangesAsync();
+
             foreach (var ord in order.OrderLines)
             {
-                ord.ProductPrice = ord.Product.Price;
+                var product = _context.Product.First(p => p.ID == ord.ProductID);
+                ord.ProductPrice = product.Price;
             }
+
+            await _context.SaveChangesAsync();            
 
             return CreatedAtAction("GetOrder", new { id = order.ID }, order);
         }
