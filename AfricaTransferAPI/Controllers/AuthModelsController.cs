@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AfricaTransfer.CoreLib.Models;
+using System.Linq;
 
 namespace AfricaTransferAPI.Controllers
 {
@@ -88,6 +89,13 @@ namespace AfricaTransferAPI.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existing = _context.AuthModel.FirstOrDefault(a => a.PhoneNumber == authModel.PhoneNumber);
+
+            if(existing != null)
+            {
+                return BadRequest();
             }
 
             _context.AuthModel.Add(authModel);
