@@ -23,6 +23,8 @@ namespace AfricaTransfer.Mob.Views
             Debug.WriteLine(code);
             InitializeComponent();
 
+            Qrimg.Source = QrCode;
+
             BindingContext = this;
         }
     }

@@ -31,7 +31,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="AfricaTransfer.Mob.Views.MainPage"
-             Title="Think of the children">
+             Title="MobiFedha">
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Button Text="Buyer"
@@ -47,7 +47,7 @@
                     Clicked="DonateBtn_Clicked"
                     FontSize="Large"/>
 
-            <Button Text="QrTest"
+            <Button Text="Login"
                     Clicked="QrTest"
                     FontSize="Large"/>
         </StackLayout>
