@@ -4,9 +4,15 @@
              x:Class="AfricaTransfer.Mob.Views.DonatePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Add funds"
+                    x:Name="AddFundsBtn"
+                    Clicked="AddFundsBtn_Clicked"/>
+            <Button Text="Transfer funds"
+                    x:Name="TransferFundsBtn"
+                    Clicked="TransferFundsBtn_Clicked"/>
+            <Button Text="View reports"
+                    x:Name="ViewReportsBtn"
+                    Clicked="ViewReportsBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

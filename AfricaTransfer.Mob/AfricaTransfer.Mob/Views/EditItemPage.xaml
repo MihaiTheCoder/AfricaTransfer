@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AfricaTransfer.Mob.Views.EditItemPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding FormattedId}" />
+            <Label Text="Item Name:" FontSize="Medium" />
+            <Label Text="{Binding Item.Text}" FontSize="Small"/>
+            <Label Text="Price:" FontSize="Medium"/>
+            <Label Text="{Binding Item.Price}" FontSize="Small"/>
+            <Label Text="Description:" FontSize="Medium" />
+            <Label Text="{Binding Item.Description}" FontSize="Small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
