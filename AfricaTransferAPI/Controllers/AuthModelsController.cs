@@ -92,13 +92,14 @@ namespace AfricaTransferAPI.Controllers
             }
 
             var existing = _context.AuthModel.FirstOrDefault(a => a.PhoneNumber == authModel.PhoneNumber);
-
+            
             if(existing != null)
             {
                 return BadRequest();
             }
 
             _context.AuthModel.Add(authModel);
+            _context.PhoneCredit.Add(new PhoneCredit {AuthModelID = authModel.ID, Credit = 0 });
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAuthModel", new { id = authModel.ID }, authModel);

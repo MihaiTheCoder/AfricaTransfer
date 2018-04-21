@@ -13,5 +13,18 @@ namespace AfricaTransfer.CoreLib.Models
         public virtual AuthModel Seller { get; set; }
 
         public virtual List<OrderLine> OrderLines { get; set; }
+
+        public int? BuyerID { get; set; }
+
+        public AuthModel Buyer { get; set; }
+
+        public OrderStatus Status { get; set; }
+    }
+
+    public enum OrderStatus
+    {
+        Requested = 0,
+        Confirmed = 1,
+        Cancelled = 2
     }
 }
