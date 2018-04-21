@@ -11,9 +11,10 @@ using System;
 namespace AfricaTransfer.CoreLib.Migrations
 {
     [DbContext(typeof(AfricaTransferContext))]
-    partial class AfricaTransferContextModelSnapshot : ModelSnapshot
+    [Migration("20180421110711_ChangeAmmountToPrice")]
+    partial class ChangeAmmountToPrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

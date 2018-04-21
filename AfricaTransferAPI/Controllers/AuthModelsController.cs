@@ -29,15 +29,15 @@ namespace AfricaTransferAPI.Controllers
         }
 
         // GET: api/AuthModels/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAuthModel([FromRoute] int id)
+        [HttpGet("{phoneNumber}")]
+        public async Task<IActionResult> GetAuthModel([FromRoute] string phoneNumber)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var authModel = await _context.AuthModel.SingleOrDefaultAsync(m => m.ID == id);
+            var authModel = await _context.AuthModel.SingleOrDefaultAsync(m => m.PhoneNumber == phoneNumber);
 
             if (authModel == null)
             {

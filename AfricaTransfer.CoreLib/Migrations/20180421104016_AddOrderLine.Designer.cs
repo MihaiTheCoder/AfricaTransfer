@@ -11,9 +11,10 @@ using System;
 namespace AfricaTransfer.CoreLib.Migrations
 {
     [DbContext(typeof(AfricaTransferContext))]
-    partial class AfricaTransferContextModelSnapshot : ModelSnapshot
+    [Migration("20180421104016_AddOrderLine")]
+    partial class AddOrderLine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,13 +99,9 @@ namespace AfricaTransfer.CoreLib.Migrations
 
                     b.Property<int>("ProductID");
 
-                    b.Property<float>("ProductPrice");
-
                     b.Property<float>("Quantity");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
 
@@ -132,9 +129,9 @@ namespace AfricaTransfer.CoreLib.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Ammount");
 
-                    b.Property<float>("Price");
+                    b.Property<string>("Name");
 
                     b.HasKey("ID");
 
@@ -171,11 +168,6 @@ namespace AfricaTransfer.CoreLib.Migrations
 
             modelBuilder.Entity("AfricaTransfer.CoreLib.Models.OrderLine", b =>
                 {
-                    b.HasOne("AfricaTransfer.CoreLib.Models.Order")
-                        .WithMany("OrderLines")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("AfricaTransfer.CoreLib.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductID")

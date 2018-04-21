@@ -21,5 +21,11 @@ namespace AfricaTransfer.CoreLib.Models
         public DbSet<MobileTransaction> MobileTransaction { get; set; }
 
         public DbSet<BankTransaction> BankTransaction { get; set; }
+
+        public DbSet<Product> Product { get; set; }
+
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<OrderLine> OrderLine { get; set; }
     }
 }

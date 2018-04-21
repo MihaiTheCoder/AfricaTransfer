@@ -44,42 +44,7 @@ namespace AfricaTransferAPI.Controllers
             }
 
             return Ok(bankTransaction);
-        }
-
-        // PUT: api/BankTransactions/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBankTransaction([FromRoute] int id, [FromBody] BankTransaction bankTransaction)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != bankTransaction.ID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(bankTransaction).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BankTransactionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
+        }        
 
         // POST: api/BankTransactions
         [HttpPost]
@@ -89,7 +54,10 @@ namespace AfricaTransferAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
+            var phoneCredit = _context.PhoneCredit.First
+                (pc => pc.AuthModelID == bankTransaction.DestinationAuthModelID);
 
+            phoneCredit.Credit += bankTransaction.Ammount;
             _context.BankTransaction.Add(bankTransaction);
             await _context.SaveChangesAsync();
 

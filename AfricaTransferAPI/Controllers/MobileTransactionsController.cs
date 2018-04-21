@@ -90,6 +90,10 @@ namespace AfricaTransferAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            var phoneCredit = _context.PhoneCredit.First
+                (pc => pc.AuthModelID == mobileTransaction.DestinationAuthModelID);
+
+            phoneCredit.Credit += mobileTransaction.Ammount;
             _context.MobileTransaction.Add(mobileTransaction);
             await _context.SaveChangesAsync();
 

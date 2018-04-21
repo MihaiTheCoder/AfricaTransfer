@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace AfricaTransfer.CoreLib.Models
@@ -16,6 +17,7 @@ namespace AfricaTransfer.CoreLib.Models
 
         public  virtual AuthModel DestinationModelAuthModel { get; set; }
 
+        [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
         public float Ammount { get; set; }
 
 

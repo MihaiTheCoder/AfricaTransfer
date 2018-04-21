@@ -12,6 +12,42 @@ namespace AfricaTransfer.CoreLib.ServerAPI
     {
         private readonly string baseURL;
         private readonly string AuthModels = "AuthModels";
+        private readonly string MobileTransactions = "MobileTransactions";
+        private readonly string BankTransactions = "BankTransactions";
+        private readonly string PhoneCredits = "PhoneCredits";
+        private readonly string Products = "Products";
+        private readonly string Orders = "Orders";
+
+        public AuthModel GetAuthModel(string phoneNumber)
+        {
+            string actionUrl = ComposeUrl(AuthModels) + "/" + phoneNumber;
+            return HttpGet<AuthModel>(actionUrl).Data;
+        }
+
+        public void AddBankTransaction(BankTransaction bankTransaction)
+        {
+            string actionUrl = ComposeUrl(BankTransactions);
+            HttpPost(actionUrl, bankTransaction);
+        }
+
+        internal void AddProduct(Product product)
+        {
+            string actionUrl = ComposeUrl(Products);
+            HttpPost(actionUrl, product);
+        }
+
+        public int AddOrder(Order order)
+        {
+            string actionUrl = ComposeUrl(Orders);
+
+            return HttpPost<Order, Order>(actionUrl, order).Data.ID;
+        }
+
+        internal Order GetOrder(int id)
+        {
+            string actionUrl = ComposeUrl(Orders) + "/" + id;
+            return HttpGet<Order>(actionUrl).Data;
+        }
 
         public ApiServer(string baseURL)
         {
@@ -41,7 +77,20 @@ namespace AfricaTransfer.CoreLib.ServerAPI
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(Data);
 
-            var response = client.Execute(request);
+            var response = client.Execute(request);            
+            return response;
+        }
+
+        protected IRestResponse<TResponse> HttpPost<TBody, TResponse>(String Uri, TBody Data)
+            where TBody : class
+            where TResponse : class, new()
+        {
+            var client = new RestClient(baseURL);
+            var request = new RestRequest(Uri, Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(Data);
+
+            var response = client.Execute<TResponse>(request);
             return response;
         }
 
