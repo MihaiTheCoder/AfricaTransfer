@@ -11,9 +11,10 @@ using System;
 namespace AfricaTransfer.CoreLib.Migrations
 {
     [DbContext(typeof(AfricaTransferContext))]
-    partial class AfricaTransferContextModelSnapshot : ModelSnapshot
+    [Migration("20180421092608_AddTransactions")]
+    partial class AddTransactions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,42 +76,6 @@ namespace AfricaTransfer.CoreLib.Migrations
                     b.ToTable("MobileTransaction");
                 });
 
-            modelBuilder.Entity("AfricaTransfer.CoreLib.Models.Order", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("SellerID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("SellerID");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("AfricaTransfer.CoreLib.Models.OrderLine", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("OrderID");
-
-                    b.Property<int>("ProductID");
-
-                    b.Property<float>("ProductPrice");
-
-                    b.Property<float>("Quantity");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("OrderID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("OrderLine");
-                });
-
             modelBuilder.Entity("AfricaTransfer.CoreLib.Models.PhoneCredit", b =>
                 {
                     b.Property<int>("ID")
@@ -125,20 +90,6 @@ namespace AfricaTransfer.CoreLib.Migrations
                     b.HasIndex("AuthModelID");
 
                     b.ToTable("PhoneCredit");
-                });
-
-            modelBuilder.Entity("AfricaTransfer.CoreLib.Models.Product", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<float>("Price");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("AfricaTransfer.CoreLib.Models.BankTransaction", b =>
@@ -158,27 +109,6 @@ namespace AfricaTransfer.CoreLib.Migrations
                     b.HasOne("AfricaTransfer.CoreLib.Models.AuthModel", "SourceAuthModel")
                         .WithMany()
                         .HasForeignKey("SourceAuthModelID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("AfricaTransfer.CoreLib.Models.Order", b =>
-                {
-                    b.HasOne("AfricaTransfer.CoreLib.Models.AuthModel", "Seller")
-                        .WithMany()
-                        .HasForeignKey("SellerID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("AfricaTransfer.CoreLib.Models.OrderLine", b =>
-                {
-                    b.HasOne("AfricaTransfer.CoreLib.Models.Order")
-                        .WithMany("OrderLines")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("AfricaTransfer.CoreLib.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AfricaTransfer.CoreLib.Models;
+using System.Linq;
 
 namespace AfricaTransferAPI.Controllers
 {
@@ -28,15 +29,15 @@ namespace AfricaTransferAPI.Controllers
         }
 
         // GET: api/AuthModels/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAuthModel([FromRoute] int id)
+        [HttpGet("{phoneNumber}")]
+        public async Task<IActionResult> GetAuthModel([FromRoute] string phoneNumber)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var authModel = await _context.AuthModel.SingleOrDefaultAsync(m => m.ID == id);
+            var authModel = await _context.AuthModel.SingleOrDefaultAsync(m => m.PhoneNumber == phoneNumber);
 
             if (authModel == null)
             {
@@ -88,6 +89,13 @@ namespace AfricaTransferAPI.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existing = _context.AuthModel.FirstOrDefault(a => a.PhoneNumber == authModel.PhoneNumber);
+
+            if(existing != null)
+            {
+                return BadRequest();
             }
 
             _context.AuthModel.Add(authModel);

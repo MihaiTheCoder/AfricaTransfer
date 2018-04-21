@@ -15,5 +15,17 @@ namespace AfricaTransfer.CoreLib.Models
         }
 
         public DbSet<AfricaTransfer.CoreLib.Models.AuthModel> AuthModel { get; set; }
+
+        public DbSet<PhoneCredit> PhoneCredit { get; set; }
+
+        public DbSet<MobileTransaction> MobileTransaction { get; set; }
+
+        public DbSet<BankTransaction> BankTransaction { get; set; }
+
+        public DbSet<Product> Product { get; set; }
+
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<OrderLine> OrderLine { get; set; }
     }
 }
