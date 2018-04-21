@@ -40,6 +40,12 @@ namespace AfricaTransferAPI
             }
 
             app.UseMvc();
+
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<AfricaTransferContext>();
+                context.Database.Migrate();
+            }
         }
     }
 }

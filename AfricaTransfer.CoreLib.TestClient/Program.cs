@@ -14,7 +14,7 @@ namespace AfricaTransfer.CoreLib.TestClient
             string sellerPhoneNumber = "07434";
             string buyerPhoneNumber = "34075";
             string donatorPhoneNumber = "1234";
-            ApiServer apiServer = new ApiServer("http://localhost:59887/api/");
+            ApiServer apiServer = new ApiServer("http://africatransferapi.azurewebsites.net/api/");
             apiServer.AddPhoneNUmber(sellerPhoneNumber);
             apiServer.AddPhoneNUmber(buyerPhoneNumber);
             apiServer.AddPhoneNUmber(donatorPhoneNumber);
