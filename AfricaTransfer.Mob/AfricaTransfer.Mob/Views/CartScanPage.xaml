@@ -3,33 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AfricaTransfer.Mob.Views.CartScanPage">
     <ContentPage.Content>
-        <ListView x:Name="MyListView"
+        <StackLayout>
+            <Button Text="Scan code"
+                    Clicked="ScanQr"/>
+            <ListView x:Name="MyListView"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
 
-            <!--Built in Cells-->
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding .}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
+                <!--Built in Cells-->
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding .}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
 
-            <!--Custom View Cells-->
+                <!--Custom View Cells-->
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <!--<Label Text="{Binding Text}" 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Price}"/>
+                                <Label Text="{Binding Quantity}"/>
+                                <!--<Label Text="{Binding Text}" 
                    Style="{DynamicResource ListItemTextStyle}" />
                             <Label Text="{Binding Detail}" 
                    Style="{DynamicResource ListItemDetailTextStyle}"/>-->
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
 
-        </ListView>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

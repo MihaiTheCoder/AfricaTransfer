@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace AfricaTransfer.Mob.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    public class AboutViewModel
     {
         public AboutViewModel()
         {
@@ -13,7 +13,7 @@ namespace AfricaTransfer.Mob.ViewModels
 
             OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
         }
-
+        public string Title { get; private set; }
         public ICommand OpenWebCommand { get; }
     }
 }

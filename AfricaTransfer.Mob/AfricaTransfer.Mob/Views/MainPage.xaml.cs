@@ -18,7 +18,7 @@ namespace AfricaTransfer.Mob.Views
             await Navigation.PushAsync(new BuyerPage());
         }
 
-        public async void Seller_Clicked(object sender, EventArgs e)
+        public async void SellerBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SellerPage());
         }
@@ -26,6 +26,11 @@ namespace AfricaTransfer.Mob.Views
         public async void DonateBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DonatePage());
+        }
+
+        public async void QrTest(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new QrCodePage("test"));
         }
 
     }

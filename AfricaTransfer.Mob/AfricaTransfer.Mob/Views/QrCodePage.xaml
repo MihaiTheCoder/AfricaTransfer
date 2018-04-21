@@ -4,7 +4,7 @@
              x:Class="AfricaTransfer.Mob.Views.QrCodePage">
     <ContentPage.Content>
         <StackLayout>
-            <Image Source="{Bindding QrCode}" />
+            <Image Source="{Binding QrCode}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

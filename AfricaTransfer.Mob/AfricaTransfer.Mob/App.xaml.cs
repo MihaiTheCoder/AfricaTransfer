@@ -13,7 +13,8 @@ namespace AfricaTransfer.Mob
             InitializeComponent();
 
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage( new MainPage());
+            //((App.Current as App).MainPage as NavigationPage).PushAsync()
         }
 
         protected override void OnStart ()

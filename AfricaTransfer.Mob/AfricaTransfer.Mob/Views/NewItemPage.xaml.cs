@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using AfricaTransfer.CoreLib.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using AfricaTransfer.Mob.Models;
 
 namespace AfricaTransfer.Mob.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Product Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Product
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                Name = "Item name",
+                Price = 0
             };
 
             BindingContext = this;

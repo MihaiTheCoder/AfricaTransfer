@@ -9,12 +9,16 @@ using Xamarin.Forms.Xaml;
 
 namespace AfricaTransfer.Mob.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class BuyerPage : ContentPage
-	{
-		public BuyerPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class BuyerPage : ContentPage
+    {
+        public BuyerPage()
+        {
+            InitializeComponent();
+        }
+        public async void ScanQrCode(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

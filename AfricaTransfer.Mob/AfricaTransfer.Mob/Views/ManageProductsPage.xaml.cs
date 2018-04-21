@@ -1,9 +1,6 @@
-﻿using AfricaTransfer.Mob.Models;
+﻿using AfricaTransfer.CoreLib.Models;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,18 +10,18 @@ namespace AfricaTransfer.Mob.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManageProductsPage : ContentPage
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Product> Items { get; set; }
 
         public ManageProductsPage()
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<Item>
+            Items = new ObservableCollection<Product>
             {
-                new Item {
-                    Id = "1",
-                    Description = "description",
-                    Text = "Item Name"
+                new Product {
+                    ID = 1,
+                    Price = 123,
+                    Name = "Item Name"
                 }
             };
 
@@ -40,6 +37,11 @@ namespace AfricaTransfer.Mob.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        async void AddItem(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

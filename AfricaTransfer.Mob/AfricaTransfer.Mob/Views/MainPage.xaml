@@ -46,6 +46,10 @@
                     x:Name="DonateBtn"
                     Clicked="DonateBtn_Clicked"
                     FontSize="Large"/>
+
+            <Button Text="QrTest"
+                    Clicked="QrTest"
+                    FontSize="Large"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
